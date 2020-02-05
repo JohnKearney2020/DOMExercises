@@ -27,21 +27,161 @@
     <div id="myFirstId">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eius qui quibusdam blanditiis veniam, voluptatibus vero quo enim distinctio repudiandae expedita recusandae et dicta. Veniam adipisci nulla odit quam quaerat.
     </div>
+    <div id="innerHtmlReplace">
+        <p>
+            Text to replace with new, bold text!
+        </p>
+    </div>
 
     <div class="hello">first hello</div>
-    <div class="goodbye"></div>
+    <div class="goodbye">first goodbye</div>
     <div class="hello">second hello</div>
     <div class="goodbye"></div>
     <div class="hello">third hello</div>
     <div class="goodbye"></div>
     <div class="hello">fourth hello</div>
-    <div class="goodbye"></div>
+    <div class="goodbye">last goodbye</div>
+
+
 
     <script>
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                      Getting an element by ID
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        // console.log is necessary to see the element in the "Console" section of the inspect tool in Chrome
+        // the HTML element must have an ID for this to work
+        var element = document.getElementById('myFirstId');
+        console.log(element);
 
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                     Getting an array of elements by class
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this will return an array that represents the HTML elements in your website with the given class
+        //not surprisingly, the element must have a class for it to be selectable
+        var elements = document.getElementsByClassName('hello');
+        console.log(elements)
         
-        var divNode = document.getElementById('myFirstId');
-        document.body.removeChild(divNode);
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                     Get Elements by Tag Name
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this will return an array of all elements with the corresponding tag
+        var tagElements = document.getElementsByTagName('img');
+        console.log('Get elements by Tag Name Below: ');
+        console.log(tagElements);
+
+        //this is a way to immediately select an item from that array
+        var tagElementsItem = document.getElementsByTagName('img')[1]; //this is the image of the tapas
+        console.log('Get elements by Tag Name Below - selecting a specific item')
+        console.log(tagElementsItem);
+        
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                         Select an Element from a Node List: .item() method
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //note the (1) as opposed to [1]
+        //this will print the whole element in the console "<img src ="https://......."
+        console.log(tagElements.item(1)); //this is the picture of the tapas
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                       Select an Element from a Node List:  Array syntax method, array[0]
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this is the same element we just selected using the item() method above
+        //the whole element is printed to the console just like it was above.
+        console.log(tagElements[1]); //this is the picture of the tapas
+        
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                             getAttribute and setAttribute
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        /*
+        var replacementImage = document.getElementsByTagName('img')[1]; //seen earlier, let's us select a specific item from the array of img tags. This selects the tapas image
+        var replacementImageLink = replacementImage.getAttribute('src'); //this is the link to our replacement image, the tapas image
+
+        var imageToReplace = document.getElementsByTagName('img')[0]; //this is the puppy image we will replace
+        imageToReplace.setAttribute('src', replacementImageLink); //this replaces the 'src' attribute of the puppy image with the link to the tapas image */
+
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          textContent
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //straightforward, this replaces existing text with new text
+        //NOTE: this does not work on HTML tags. See innerHTML for that.
+        var loremToReplace = document.getElementById('myFirstId'); //selects the Lorem Ipsum div
+        loremToReplace.textContent = 'We replaced Lorem Ipsum with this.'
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          innerHTML
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this will replace text AND HTML in an element. Here we do it to text in a paragraph, and add a <strong></strong> html tag to it
+        var htmlToReplace = document.getElementById('innerHtmlReplace'); //we've selected the paragraph we want to replace
+        htmlToReplace.innerHTML = '<strong>We replaced this with new, bold text!</strong>';
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          querySelector
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this selects ONE elements. If multiple elements match the element, it returns the First of those elements
+        var querySelectorImage = document.querySelector('img'); //this will return the first image, the puppy image
+        console.log("querySelector('img') returned this: ");
+        console.log(querySelectorImage)
+        //You can select a class by using .classname
+        //var goodbye = document.querySelector('.goodbye'); //this will select the first purple div with class "goodbye"
+        //or using an id
+        var querySelectorID = document.querySelector('#myFirstId')
+        console.log("querySelector('#myFirstId') selected this: ");
+        console.log(querySelectorID);
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          querySelectorAll
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this selects ALL of the elements that match a tag
+        //NOTE: the 'All' at the end is critical for this working
+        var querySelectorAllImages = document.querySelectorAll('img'); //this creates an array of both of our images, the puppy and the tapas
+        console.log("querySelectorAll('img') returned this array of images: ");
+        console.log(querySelectorAllImages);
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          Creating Elements
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        var newElement = document.createElement('h1');
+        //the new element is created, but it has not been added to the DOM yet
+        newElement.textContent = 'This h1 was created in Javascript and added to our body.' //let's add some text to it
+
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          appendChild
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        var body = document.querySelector('body'); //this selects the body of our page
+        body.appendChild(newElement); //this adds the h1 we created aboveto our body
+        //NOTE: .appendChild adds elements the the END of the parent. In this case, it added it to the bottom of the page.
+
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //                                          removeChild
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this removes an element from its parent
+        //NOTE: just like how append adds the last/bottom of the parent, removeChild removes children from the last/bottom of the parent
+        //we'll use body again, which we selected above using querySelector('body')
+        var goodbye = document.querySelector('.goodbye'); //this will select the first purple div with class "goodbye"
+        //NOTE: the .goodbye is needed to select a class.
+        console.log('goodbye div selector: ');
+        console.log(goodbye)
+        body.removeChild(goodbye);
+        //with that we have removed the 'first goodbye' row!
+
+
+
+
+
+        // var divNode = document.getElementById('myFirstId');
+        // document.body.removeChild(divNode);
 
 
         // var element = document.createElement('h1');
