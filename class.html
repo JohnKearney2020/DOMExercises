@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hello {
+            width: 100%;
+            min-height: 100px;
+            background: coral;
+        }
+        .goodbye {
+            width: 100%;
+            min-height: 100px;
+            background: purple;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://cdn3-www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg" alt=""> <!--image index 0 -->
+    
+    <img src="https://bigoven-res.cloudinary.com/image/upload/d_recipe-no-image.jpg,t_recipe-480/festive-papas-tapas.jpg" alt="">
+    
+    <div id="myFirstId">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eius qui quibusdam blanditiis veniam, voluptatibus vero quo enim distinctio repudiandae expedita recusandae et dicta. Veniam adipisci nulla odit quam quaerat.
+    </div>
+
+    <div class="hello">first hello</div>
+    <div class="goodbye"></div>
+    <div class="hello">second hello</div>
+    <div class="goodbye"></div>
+    <div class="hello">third hello</div>
+    <div class="goodbye"></div>
+    <div class="hello">fourth hello</div>
+    <div class="goodbye"></div>
+
+    <script>
+
+        
+        var divNode = document.getElementById('myFirstId');
+        document.body.removeChild(divNode);
+
+
+        // var element = document.createElement('h1');
+        // element.textContent = 'hello world';
+        // var body = document.querySelector('body');
+        // body.append(element);
+
+        // var h1 = document.createElement('h1');
+        // h1.textContent = 'appended h1';
+        // var helloDiv = document.querySelector('.hello');
+        // helloDiv.append(h1);
+
+        // var helloDivArrray = document.querySelectorAll('.hello');
+        // helloDivArrray[2].append(h1);
+
+
+
+
+    // var elements = document.getElementsByClassName('hello');
+    // console.log(elements); //html collection
+    // console.log(elements.item(0)); //first hello
+    // console.log(elements[1]); //second hello
+    // if( elements.length >= 1){
+    //     var firstItem = elements.item(0);
+    // }
+        // var imgArray = document.getElementsByTagName('img'); //this is an array
+        // console.log(imgArray);
+        // console.log(imgArray[0]);
+        // imgArray[0].setAttribute('src','https://images-na.ssl-images-amazon.com/images/I/51HgHPipETL._SX258_BO1,204,203,200_.jpg')
+
+        // var src = imgArray[1].getAttribute('src');
+        // console.log(src);
+
+        // var divArray = document.getElementsByClassName('hello');
+        // console.log(divArray)
+
+        // divArray[0].textContent = 'Good Morning'; //only works on text
+
+        // divArray[1].innerHTML = '<strong>zippity doo dah</strong>'; //will work on html, too
+        // var body = document.querySelector('div') //this will select the first div
+        // console.log(body);
+        // var div = document.querySelectorAll('div') //this will select all divs
+        // console.log(div);
+
+
+    </script>
+</body>
+</html>
