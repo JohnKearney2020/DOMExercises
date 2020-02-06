@@ -7,7 +7,18 @@ var headerDiv = document.createElement('div');
 // headerDiv.setAttribute('class', 'header d-flex flex-row align-items-center');
 headerDiv.setAttribute('class', 'header row mb-4 align-items-center');
 
-//div1, left div, will cotain 'High on Coding'
+// function createDiv(elementName, elementType, attributeKey, attributeValue, innerHTML, parentAppendTo) {
+// 	//div1, left div, will cotain 'High on Coding'
+// 	var elementName = document.createElement(elementType);
+// 	elementName.setAttribute(attributeKey, attributeValue);
+// 	elementName.innerHTML = innerHTML;
+// 	parentAppendTo.append(elementName);
+// 	return elementName;
+// }
+
+// createDiv('headerNestedDiv1', 'div', 'class', 'header col-4 mr-3', '<h1><strong>High On Coding</strong></h1>', 'headerDiv');
+
+// div1, left div, will cotain 'High on Coding'
 var headerNestedDiv1 = document.createElement('div');
 headerNestedDiv1.setAttribute('class', 'header col-4 mr-3');
 headerNestedDiv1.innerHTML = '<h1><strong>High On Coding</strong></h1>';
@@ -26,7 +37,7 @@ headerNestedDiv3.innerHTML = '<h3>Categories</h3>';
 headerDiv.append(headerNestedDiv3);
 
 //add the compleyte header to the container
-var containerDiv = document.querySelector('.container');
+var containerDiv = document.querySelector('.container'); //this selects the overall container we created in our HTML document
 containerDiv.append(headerDiv);
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
